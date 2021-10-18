@@ -18,6 +18,8 @@ public class HWS_Server{
     private static DatagramPacket packet;
     private static InetAddress clientIP;
     private static int clientPort;
+    private static byte[] sendData;
+
 
     public static void main(String[] args){
 
@@ -25,7 +27,7 @@ public class HWS_Server{
             init();
             while(true) {
                 System.out.println("Server is running");
-                receivedData = new byte[1024];
+                receivedData = new byte[9999];
                 sendRes(recieveReq());
             }
 
@@ -45,7 +47,7 @@ public class HWS_Server{
         try {
             packet = new DatagramPacket(receivedData, receivedData.length);
             serverSocket.receive(packet);
-            System.out.println("request ");
+//            System.out.println("request ");
             clientIP = packet.getAddress();
             clientPort = packet.getPort();
             return ByteConverter.deserialize(packet.getData());
@@ -57,7 +59,6 @@ public class HWS_Server{
 
     private static void sendRes(Object object) {
         try {
-            byte[] sendData;
             if (object instanceof Hardware) {
                 sendData = ByteConverter.serialize(DBQueries.insert((Hardware) object));
             }else {

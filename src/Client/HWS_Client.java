@@ -1,7 +1,5 @@
 package Client;
-
 import Utils.ByteConverter;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -9,9 +7,6 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Object.Hardware;
-import Utils.Port;
-
-import javax.xml.crypto.Data;
 
 
 public class HWS_Client {
@@ -23,15 +18,15 @@ public class HWS_Client {
     private static DatagramPacket packet;
     private static Scanner input;
     private static Hardware hardware;
-    private static String string;
+//    private static String string;
     private static int choice;
     private static boolean cont;
 
     public static void main(String[] args) throws IOException {
         init();
         while(cont){
-            sendData = new byte[1024];
-            recieveData = new byte[1024];
+            sendData = new byte[9999];
+            recieveData = new byte[9999];
             displayMenu();
             userInput();
             hardware.reset();
@@ -136,7 +131,7 @@ public class HWS_Client {
     private static Object sendReq() {
         try {
             packet = new DatagramPacket(sendData, sendData.length, IP, 6969);
-            sendData = new byte[1024];
+//            sendData = new byte[9999];
             clientSocket.send(packet);
         } catch (IOException ioException) {
             ioException.printStackTrace();

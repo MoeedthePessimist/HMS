@@ -85,7 +85,6 @@ public class Hardware implements Serializable {
     public void setQuantity(double quantity) { this.quantity = quantity; }
 
     public void displayHardwareInfo() {
-
         System.out.println("----------------------------------------");
             System.out.printf("ID: %d\nNAME: %s\nPRICE: $%.2f\nCATEGORY: %s\nMANUFACTURER: %s\nDESCRIPTION: %s\nQUANTITY: %d\n",
                     (int) this.getId(),
